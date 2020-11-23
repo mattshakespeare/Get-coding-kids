@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title>To Do list</title>
+  <script>
+    function addItem() {
+     var newItem = document.createElement("div");
+     newItem.innerHTML = document.getElementById("box").value;
+     newItem.onclick = removeItem;
+     document.getElementById("list").appendChild(newItem);
+     saveList();
+    }
+    function removeItem() {
+      document.getElementById("list").removeChild(this);
+      saveList();
+    }
+    function saveList() {
+      localStorage.storedList = document.getElementById("list").innerHTML;
+    }
+    function loadList() {
+      document.getElementById("list").innerHTML=localStorage.storedList;
+      for(var i = 0; i < list.children.length; i++) {
+        list.children[i].onclick = removeItem;
+        }
+    }
+  </script>
+  <style>
+    .pad {
+      padding: 25px;
+    }
+    body { 
+      margain: 0px;
+      background-color: beige;
+    }
+    .header { 
+      background-color: darkgreen;
+      color: black;
+      height: 200px;
+      font-size: 20pt;
+      text-align: center;
+    }
+    .welcome {
+      background-color: lightgreen;
+      color: black;
+      height: 50px;
+      font-size: 20pt;
+      text-align: center;
+    }
+    .box {
+      height: 20px;
+      width: 250px;
+    }  
+    .button {
+      margin: 10px;
+      background-color: pink;
+    }     
+ </style>
+</head>
+<body>
+ <div class="header pad">
+  <img src="House of volkov image.jpeg">
+  <p>The House Of Volkov</p>
+ </div>
+  <p>Special exhibition To-do list</p>
+  <br/>
+  <input type="text" id="box" div class="box" value="Type here to add task"/>
+  <br/>
+  <input type="button" value="Add item" div class="button" onclick="addItem();"/>
+  <br/>
+ <div id="list"></div>
+  <script>
+   if(localStorage.storedList) {
+      loadList();
+    }
+  </script>
+</body>
+</html>
